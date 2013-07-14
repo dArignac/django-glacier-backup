@@ -1,0 +1,5 @@
+Django==1.5.1
+boto>=2.9.2
+celery>=3
+pytz
+South>=0.7
