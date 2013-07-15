@@ -42,7 +42,7 @@ class Vault(models.Model):
 
 class Archive(models.Model):
     STATUS_CHOICES = (
-        (0, _('Initial'),),
+        (0, _('Initial Status'),),
         (1, _('Uploaded'),),
         (2, _('Failed',)),
         (3, _('Not on Glacier',)),  # status for archives locally in db but not in AWS Glacier
@@ -105,7 +105,7 @@ class Archive(models.Model):
 class Job(models.Model):
     STATUS_CHOICES = (
         (0, _('Created'),),
-        (1, _('Succeeded'),),
+        (1, _('Uploaded'),),
         (2, _('Failed',)),
         (3, _('Deleted on Glacier'),),
         (4, _('Result synchronized'),),
@@ -258,6 +258,10 @@ class InventoryRetrievalJob(Job):
         """
         return 'inventory-retrieval'
 
+    class Meta:
+        verbose_name = ugettext_lazy('Inventory retrieval job')
+        verbose_name_plural = ugettext_lazy('Inventory retrieval jobs')
+
 
 class ArchiveRetrievalJob(Job):
     """
@@ -275,6 +279,10 @@ class ArchiveRetrievalJob(Job):
         max_length=255,
         verbose_name=_('Archive ID'),
     )
+
+    class Meta:
+        verbose_name = ugettext_lazy('Archive retrieval job')
+        verbose_name_plural = ugettext_lazy('Archive retrieval jobs')
 
     def __get_specific_job_data(self):
         """

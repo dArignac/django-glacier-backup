@@ -1,0 +1,151 @@
+# German translations for django-glacier-backup.
+# Copyright (C) 2013 Alexander Herrmann
+# This file is distributed under the same license as the django-glacier-backup package.
+# Alexander Herrmann <darignac@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: django-glacier-backup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-15 17:22+0200\n"
+"PO-Revision-Date: 2013-07-15 17:24+0100\n"
+"Last-Translator: Alexander Herrmann <darignac@gmail.com>\n"
+"Language-Team: DE <darignac@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: admin.py:32
+msgid "Inventory vaults"
+msgstr "Vaults inventarisieren"
+
+#: models.py:13
+msgid "Name"
+msgstr "Name"
+
+#: models.py:32
+#, python-format
+msgid "There is no vault with the name \"%(vault_name)s\" on AWS!"
+msgstr "Es existiert kein Vault mit dem Namen \"%(vault_name)s\" auf AWS!"
+
+#: models.py:39 models.py:116
+msgid "Vault"
+msgstr "Vault"
+
+#: models.py:40
+msgid "Vaults"
+msgstr "Vaults"
+
+#: models.py:45
+msgid "Initial Status"
+msgstr "Initialer Status"
+
+#: models.py:46 models.py:108
+msgid "Uploaded"
+msgstr "Hochgeladen"
+
+#: models.py:47 models.py:109
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+#: models.py:48
+msgid "Not on Glacier"
+msgstr "Nicht auf Glacier"
+
+#: models.py:53
+msgid "Title"
+msgstr "Titel"
+
+#: models.py:57
+msgid "Glacier Backup ID"
+msgstr "Glacier Backup ID"
+
+#: models.py:61
+msgid "Creation Date"
+msgstr "Erstellungsdatum"
+
+#: models.py:69
+msgid "Path to original file"
+msgstr "Pfad zur Originaldatei"
+
+#: models.py:74
+msgid "Size in Byte"
+msgstr "Größe in Byte"
+
+#: models.py:79 models.py:122
+msgid "Status"
+msgstr "Status"
+
+#: models.py:101
+msgid "Archive"
+msgstr "Archiv"
+
+#: models.py:102
+msgid "Archives"
+msgstr "Archive"
+
+#: models.py:107
+msgid "Created"
+msgstr "Erstellt"
+
+#: models.py:110
+msgid "Deleted on Glacier"
+msgstr "Auf Glacier gelöscht"
+
+#: models.py:111
+msgid "Result synchronized"
+msgstr "Ergebnis synchronisiert"
+
+#: models.py:130
+msgid "Location"
+msgstr "Aufbewahrungsort"
+
+#: models.py:137
+msgid "Job ID"
+msgstr "Job ID"
+
+#: models.py:144
+msgid "Request ID"
+msgstr "Request ID"
+
+#: models.py:151
+msgid "Description (optional)"
+msgstr "Beschreibung (optional)"
+
+#: models.py:156
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+#: models.py:161
+msgid "Update date"
+msgstr "Aktualisierungsdatum"
+
+#: models.py:168
+msgid "Time when AWS Glacier has finished the job"
+msgstr "Uhrzeit, wenn AWS Glacier den Job erledigt hat"
+
+#: models.py:169
+msgid "Completion date"
+msgstr "Fertigstellungsdatum"
+
+#: models.py:262
+msgid "Inventory retrieval job"
+msgstr "Inventarisierungs-Job"
+
+#: models.py:263
+msgid "Inventory retrieval jobs"
+msgstr "Inventarisierungs-Jobs"
+
+#: models.py:280
+msgid "Archive ID"
+msgstr "Archiv ID"
+
+#: models.py:284
+msgid "Archive retrieval job"
+msgstr "Archiv-Wiederherstellungs-Job"
+
+#: models.py:285
+msgid "Archive retrieval jobs"
+msgstr "Archiv-Wiederherstellungs-Jobs"
