@@ -1,13 +1,13 @@
 django-glacier-backup
 =====================
 
-Manage AWS Glacier vaults in Django and backup local files to Glacier.
+Integrates [Amazon Glacier](http://aws.amazon.com/glacier/) into Django.Synchronizes the vault statuses, allowes you to upload and download archives to/from Glacier.
 
-**Hint: Not ready for production!**
+**Release information**: unfinished (blocked through #1 and #2)
 
 
-TODO
+Documentation ToDos:
 
 - write down necessary settings
 - write quick howto
-- some screenshots?
+- maybe some screenshots?
