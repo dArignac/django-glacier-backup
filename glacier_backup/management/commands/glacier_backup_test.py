@@ -17,7 +17,7 @@ class Command(BaseCommand):
                 'help': 'Retrieve the last 10 messages of the configured SNS topic',
                 'method': self.sqs_query_direct,
             },
-            'sqs_query_task': {
+            'sqs_query_task  ': {
                 'help': 'Executes the SQSMessageCollector task',
                 'method': self.sqs_query_task,
             }
