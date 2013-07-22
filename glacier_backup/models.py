@@ -95,6 +95,14 @@ class Archive(models.Model):
         self.status = 3
         self.save()
 
+    def download(self):
+        """
+        Queues the archive for download.
+        """
+        # TODO create ArchiveRetrievalJob
+        # TODO send job to Glacier
+        pass
+
     def __unicode__(self):
         return u'%(title)s (Vault: %(vault)s) (Status: %(status)s)' % {
             'title': self.title,

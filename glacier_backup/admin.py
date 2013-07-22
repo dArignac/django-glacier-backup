@@ -1,5 +1,5 @@
-from django.contrib import admin
-from django.utils.translation import ugettext_lazy
+from django.contrib import admin, messages
+from django.utils.translation import ugettext as _, ugettext_lazy
 
 from glacier_backup.models import (
     Archive,
@@ -14,6 +14,24 @@ class ArchiveAdmin(admin.ModelAdmin):
     date_hierarchy = 'created'
     ordering = ('created', 'vault', 'status', )
     search_fields = ('title', 'vault', 'created',)
+    actions = ['download', ]
+
+    def download(self, request, queryset):
+        """
+        Queues the archive for download.
+        :param request: the sent request
+        :param queryset: the queryset containing the selected archives
+        :type request: django.core.handlers.wsgi.WSGIRequest
+        :type queryset: django.db.models.query.QuerySet
+        """
+        for archive in queryset.all():
+            archive.download()
+
+        messages.add_message(request, messages.SUCCESS, _('Successfully created %(count)d archive retrieval jobs.') % {
+            'count': queryset.count(),
+        })
+
+    download.short_description = ugettext_lazy('Download')
 
 
 class VaultAdmin(admin.ModelAdmin):
