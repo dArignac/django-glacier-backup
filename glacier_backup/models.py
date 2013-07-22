@@ -79,8 +79,14 @@ class Archive(models.Model):
         verbose_name=_('Status'),
     )
 
-    def get_status_name(self, status):
-        return dict(self.STATUS_CHOICES)[status]
+    def get_status_name(self, status_id):
+        """
+        Returns the name of the given status.
+        :param status_id: the status id
+        :return: the status name
+        :rtype: str
+        """
+        return dict(self.STATUS_CHOICES)[status_id]
 
     def mark_as_not_on_glacier(self):
         """
