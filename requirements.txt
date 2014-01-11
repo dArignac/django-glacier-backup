@@ -1,4 +1,4 @@
-Django==1.5.1
+Django>=1.5.1,<1.7
 boto>=2.9.2
 celery>=3
 pytz
