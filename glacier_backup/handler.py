@@ -57,7 +57,7 @@ class InventoryRetrievalHandler(object):
         try:
             job = InventoryRetrievalJob.objects.get(job_id=msg['JobId'])
         except InventoryRetrievalJob.DoesNotExist:
-            logger.error('Unable to find a job with id "%(job_id)s" for message id "%(message_id)s' % {
+            logger.error('Unable to find a job with id "%(job_id)s" for message id "%(message_id)s', extra={
                 'job_id': msg['JobId'],
                 'message_id': message_dict['MessageId'],
             })
@@ -71,7 +71,7 @@ class InventoryRetrievalHandler(object):
 
             # if the inventory job does not longer exist, mark it this way and delete the sqs message
             if inventory is None:
-                logger.info('inventory result for InventoryJob %d does not longer exist' % job.pk)
+                logger.info('inventory result for InventoryJob %d does not longer exist', job.pk)
                 # mark job as deleted
                 job.mark_as_deleted_on_glacier()
             else:
@@ -81,11 +81,11 @@ class InventoryRetrievalHandler(object):
                     # mark job as synchronized / handled
                     job.mark_as_result_synchronized()
                 else:
-                    logger.error('Inventory job result contained no ArchiveList: %s' % inventory)
+                    logger.error('Inventory job result contained no ArchiveList: %s', inventory)
 
         # else write a log and set job as failed
         else:
-            logger.error('SQS returned unknown StatusCode "%(status_code)s - marking the job (job_id: %(job_id)s) as failed!' % {
+            logger.error('SQS returned unknown StatusCode "%(status_code)s - marking the job (job_id: %(job_id)s) as failed!', extra={
                 'status_code': msg['StatusCode'],
                 'job_id': job.job_id,
             })
@@ -142,4 +142,4 @@ class InventoryRetrievalHandler(object):
         :type message_dict: dict
         """
         if not SQS().delete_message(sqs_message):
-            logger.error('unable to delete message from sqs: %s' % message_dict)
+            logger.error('unable to delete message from sqs: %s', message_dict)

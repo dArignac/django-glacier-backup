@@ -37,7 +37,7 @@ class ArchiveAdmin(admin.ModelAdmin):
 class VaultAdmin(admin.ModelAdmin):
     actions = ['inventory', ]
 
-    def inventory(self, request, queryset):
+    def inventory(self, request, queryset):  # pylint:disable=unused-argument
         """
         Inventories the selected vaults.
         :param request: the sent request

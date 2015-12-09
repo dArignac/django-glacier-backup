@@ -35,13 +35,13 @@ class SQSMessageBroker(object):
                     if type(message_dict['Message'] != 'dict'):
                         try:
                             message_dict['Message'] = json.loads(message_dict['Message'])
-                        except:
+                        except ValueError:
                             logger.exception('Unable to transform the "Message" of the message to Python')
                             return
 
                     try:
                         return getattr(handler, message_dict['Message']['Action'] + 'Handler')(sqs_message, message_dict)
-                    except:
+                    except AttributeError:
                         logger.exception('Unable to call a handler class for SQS message')
                         return
 
