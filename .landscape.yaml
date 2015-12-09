@@ -1,2 +1,7 @@
+doc-warnings: yes
+max-line-length: 160
 uses:
   - django
+  - celery
+requirements:
+  - requirements.txt
