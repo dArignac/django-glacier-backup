@@ -9,12 +9,12 @@ logger = logging.getLogger('glacier_backup')
 
 
 class InventoryRetrievalHandler(object):
-    """
-    Class that handles the inventory retrieval for Glacier vaults.
-    """
+    """Class that handles the inventory retrieval for Glacier vaults."""
 
     def __init__(self, sqs_message, message_dict):
         """
+        Initializes the instance.
+
         :param sqs_message: the boto message instance
         :type sqs_message: boto.sqs.message.Message
         :param message_dict: the message from Glacier as dict. It basically looks this way (example for InventoryRetrievalJob):
@@ -136,6 +136,7 @@ class InventoryRetrievalHandler(object):
     def __delete_sqs_message(self, sqs_message, message_dict):
         """
         Deletes the given message from SQS.
+
         :param sqs_message: the message class
         :type sqs_message: boto.sqs.message.Message
         :param message_dict: the message as dict

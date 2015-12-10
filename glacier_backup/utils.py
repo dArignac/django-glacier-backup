@@ -8,6 +8,7 @@ from pytz import timezone
 def create_local_date_from_utc_datetime_without_tzinfo(str_date):
     """
     Tries to create a localized datetime from the given string that represents a datetime of UTC timezone.
+
     :param str_date: the datetime string
     :type str_date: str
     :return: datetime.datetime

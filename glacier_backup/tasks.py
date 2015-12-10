@@ -13,15 +13,11 @@ logger = logging.getLogger('glacier_backup_sqs')
 
 
 class SQSMessageCollector(PeriodicTask):
-    """
-    Periodic task calling SQS for new messages.
-    """
+    """Periodic task calling SQS for new messages."""
     run_every = timedelta(minutes=30)
 
     def run(self, **kwargs):
-        """
-        Calls SQS for messages and delegates them to the MessageBroker
-        """
+        """Calls SQS for messages and delegates them to the MessageBroker"""
         # get some messages...
         sqs_messages = SQS().get_messages(settings.AWS_SQS_DEFAULT_MESSAGES_COLLECTED)
         broker = SQSMessageBroker()

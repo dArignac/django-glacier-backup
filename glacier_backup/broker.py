@@ -9,9 +9,7 @@ logger = logging.getLogger('glacier_backup_sqs')
 
 
 class SQSMessageBroker(object):
-    """
-    Message broker for SQS received messages.
-    """
+    """Message broker for SQS received messages."""
 
     def delegate(self, sqs_message, message_dict):
         """

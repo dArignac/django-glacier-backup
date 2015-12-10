@@ -11,14 +11,10 @@ from . import app_settings as settings
 
 
 class EnsureSettingsSetUpMixin(object):
-    """
-    Mixin ensuring that the basic AWS settings were configured.
-    """
+    """Mixin ensuring that the basic AWS settings were configured."""
 
     def __init__(self):
-        """
-        Checks that the basic AWS settings were configured, else raises error.
-        """
+        """Checks that the basic AWS settings were configured, else raises error."""
         if len(settings.AWS_ACCESS_KEY_ID) == 0:
             raise ImproperlyConfigured('settings.AWS_ACCESS_KEY_ID is not set correctly!')
         if len(settings.AWS_SECRET_ACCESS_KEY) == 0:
@@ -32,14 +28,10 @@ class EnsureSettingsSetUpMixin(object):
 
 
 class SQS(EnsureSettingsSetUpMixin):
-    """
-    A wrapper around Boto's SQS methods to be able to use more natural methods.
-    """
+    """A wrapper around Boto's SQS methods to be able to use more natural methods."""
 
     def __init__(self):
-        """
-        Checks that the basic AWS settings were configured, else raises error.
-        """
+        """Checks that the basic AWS settings were configured, else raises error."""
         # do what mama says
         super(SQS, self).__init__()
 
@@ -63,6 +55,7 @@ class SQS(EnsureSettingsSetUpMixin):
     def __get_queue(self):
         """
         Returns the Queue object for the current configuration.
+
         :return: the Queue
         :rtype: boto.sqs.queue.Queue
         """
@@ -106,13 +99,12 @@ class SQS(EnsureSettingsSetUpMixin):
 
 
 class Glacier(EnsureSettingsSetUpMixin):
-    """
-    A wrapper around Boto's Glacier methods to be able to use more natural methods.
-    """
+    """A wrapper around Boto's Glacier methods to be able to use more natural methods."""
 
     def __get_glacier_connection(self):
         """
         Returns a connection to AWS Glacier.
+
         :returns: glacier connection
         :rtype: boto.glacier.layer2.Layer2
         """

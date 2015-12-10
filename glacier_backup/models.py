@@ -14,9 +14,7 @@ class Vault(models.Model):
     )
 
     def inventory(self):
-        """
-        Creates an InventoryRetrievalJob for the vault if there is not already one that has not yet finished.
-        """
+        """Creates an InventoryRetrievalJob for the vault if there is not already one that has not yet finished."""
         job = InventoryRetrievalJob.objects.create(vault=self)
         job.map_job_creation_results(
             Glacier().initiate_job(str(self.name), job.get_job_data())
@@ -24,9 +22,7 @@ class Vault(models.Model):
         job.save()
 
     def clean(self):
-        """
-        Ensures the vault really exists on AWS before creating database representation.
-        """
+        """Ensures the vault really exists on AWS before creating database representation."""
         # check if there is an AWS vault with this name
         if not Glacier().exists_vault(str(self.name)):
             raise ValidationError(_('There is no vault with the name "%(vault_name)s" on AWS!') % {'vault_name': self.name})
@@ -82,6 +78,7 @@ class Archive(models.Model):
     def get_status_name(self, status_id):
         """
         Returns the name of the given status.
+
         :param status_id: the status id
         :return: the status name
         :rtype: str
@@ -89,16 +86,12 @@ class Archive(models.Model):
         return dict(self.STATUS_CHOICES)[status_id]
 
     def mark_as_not_on_glacier(self):
-        """
-        Marks the archive as not on glacier (found).
-        """
+        """Marks the archive as not on glacier (found)."""
         self.status = 3
         self.save()
 
     def download(self):
-        """
-        Queues the archive for download.
-        """
+        """Queues the archive for download."""
         # TODO create ArchiveRetrievalJob
         # TODO send job to Glacier
         pass
@@ -191,21 +184,21 @@ class Job(models.Model):
     def __unicode__(self):
         """
         Returns a string representation.
+
         :return: string
         """
         return 'Job (Vault: {:s}ID:{:s}'.format(self.vault, self.job_id)
 
     @property
     def sns_topic_arn(self):
-        """
-        Returns the SNS
-        """
+        """Returns the SNS"""
         from . import app_settings as settings
         return settings.AWS_SNS_TOPIC_ARN
 
     def map_job_creation_results(self, results):
         """
         Maps the results of Glacier().initiate_job(...) to the instance.
+
         :param results: dictionary with AWS results
         :type results: dict
         """
@@ -214,9 +207,7 @@ class Job(models.Model):
         self.job_id = results['JobId']
 
     def mark_as_failed(self):
-        """
-        Sets the status of the job to failed.
-        """
+        """Sets the status of the job to failed."""
         self.status = 2
         self.date_completion = tz_aware_now()
         self.save()
@@ -231,9 +222,7 @@ class Job(models.Model):
         self.save()
 
     def mark_as_result_synchronized(self):
-        """
-        Sets the status of the job to the one that marks that the result of the job has been handled.
-        """
+        """Sets the status of the job to the one that marks that the result of the job has been handled."""
         self.status = 4
         self.date_completion = tz_aware_now()
         self.save()
@@ -268,15 +257,11 @@ class Job(models.Model):
 
 
 class InventoryRetrievalJob(Job):
-    """
-    Job for getting the inventory of a vault.
-    """
+    """Job for getting the inventory of a vault."""
 
     @property
     def type(self):
-        """
-        The job type,
-        """
+        """The job type."""
         return 'inventory-retrieval'
 
     class Meta:
@@ -285,15 +270,11 @@ class InventoryRetrievalJob(Job):
 
 
 class ArchiveRetrievalJob(Job):
-    """
-    Job for retrieving the archive of a vault.
-    """
+    """Job for retrieving the archive of a vault."""
 
     @property
     def type(self):
-        """
-        The job type,
-        """
+        """The job type,"""
         return 'archive-retrieval'
 
     archive_id = models.CharField(

@@ -19,6 +19,7 @@ class ArchiveAdmin(admin.ModelAdmin):
     def download(self, request, queryset):
         """
         Queues the archive for download.
+
         :param request: the sent request
         :param queryset: the queryset containing the selected archives
         :type request: django.core.handlers.wsgi.WSGIRequest
@@ -40,6 +41,7 @@ class VaultAdmin(admin.ModelAdmin):
     def inventory(self, request, queryset):  # pylint:disable=unused-argument
         """
         Inventories the selected vaults.
+
         :param request: the sent request
         :param queryset: the queryset containing the selected vaults
         :type request: django.core.handlers.wsgi.WSGIRequest
