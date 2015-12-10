@@ -14,6 +14,7 @@ logger = logging.getLogger('glacier_backup_sqs')
 
 class SQSMessageCollector(PeriodicTask):
     """Periodic task calling SQS for new messages."""
+    
     run_every = timedelta(minutes=30)
 
     def run(self, **kwargs):

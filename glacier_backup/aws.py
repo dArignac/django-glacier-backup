@@ -11,6 +11,7 @@ from . import app_settings as settings
 
 
 class EnsureSettingsSetUpMixin(object):
+
     """Mixin ensuring that the basic AWS settings were configured."""
 
     def __init__(self):
