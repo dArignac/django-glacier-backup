@@ -214,8 +214,7 @@ class Job(models.Model):
 
     def mark_as_deleted_on_glacier(self):
         """
-        If it takes to long to request the job output the job is deleted on Glacier.
-        This method then sets the appropriate status for the Job.
+        This method then sets the appropriate status for the Job if it takes to long to request the job output the job is deleted on Glacier.
         """
         self.status = 3
         self.date_completion = tz_aware_now()
@@ -229,8 +228,7 @@ class Job(models.Model):
 
     def __get_specific_job_data(self):
         """
-        Returns a dict with specific data for job creation of this class.
-        It will be merged with the general self.get_job_data dict.
+        Returns a dict with specific data for job creation of this class. It will be merged with the general self.get_job_data dict.
 
         :returns: job specific data
         :rtype: dict
@@ -257,6 +255,7 @@ class Job(models.Model):
 
 
 class InventoryRetrievalJob(Job):
+
     """Job for getting the inventory of a vault."""
 
     @property
@@ -270,6 +269,7 @@ class InventoryRetrievalJob(Job):
 
 
 class ArchiveRetrievalJob(Job):
+
     """Job for retrieving the archive of a vault."""
 
     @property
@@ -288,8 +288,7 @@ class ArchiveRetrievalJob(Job):
 
     def __get_specific_job_data(self):
         """
-        Returns a dict with specific data for job creation of this class.
-        It will be merged with the general self.get_job_data dict.
+        Returns a dict with specific data for job creation of this class. It will be merged with the general self.get_job_data dict.
 
         :returns: job specific data
         :rtype: dict

@@ -9,6 +9,7 @@ logger = logging.getLogger('glacier_backup_sqs')
 
 
 class SQSMessageBroker(object):
+
     """Message broker for SQS received messages."""
 
     def delegate(self, sqs_message, message_dict):
@@ -22,7 +23,6 @@ class SQSMessageBroker(object):
         :returns: Nothing
         :rtype: None
         """
-
         # some keys have to be set, will use this three now
         if 'Type' in message_dict and 'TopicArn' in message_dict and 'Message' in message_dict:
             # handle notifications

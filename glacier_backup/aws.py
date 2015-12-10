@@ -29,6 +29,7 @@ class EnsureSettingsSetUpMixin(object):
 
 
 class SQS(EnsureSettingsSetUpMixin):
+
     """A wrapper around Boto's SQS methods to be able to use more natural methods."""
 
     def __init__(self):
@@ -100,6 +101,7 @@ class SQS(EnsureSettingsSetUpMixin):
 
 
 class Glacier(EnsureSettingsSetUpMixin):
+
     """A wrapper around Boto's Glacier methods to be able to use more natural methods."""
 
     def __get_glacier_connection(self):

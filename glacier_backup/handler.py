@@ -9,6 +9,7 @@ logger = logging.getLogger('glacier_backup')
 
 
 class InventoryRetrievalHandler(object):
+
     """Class that handles the inventory retrieval for Glacier vaults."""
 
     def __init__(self, sqs_message, message_dict):
