@@ -213,9 +213,7 @@ class Job(models.Model):
         self.save()
 
     def mark_as_deleted_on_glacier(self):
-        """
-        This method then sets the appropriate status for the Job if it takes to long to request the job output the job is deleted on Glacier.
-        """
+        """This method then sets the appropriate status for the Job if it takes to long to request the job output the job is deleted on Glacier."""
         self.status = 3
         self.date_completion = tz_aware_now()
         self.save()

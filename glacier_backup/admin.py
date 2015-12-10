@@ -1,3 +1,4 @@
+"""Admin site definitions"""
 from django.contrib import admin, messages
 from django.utils.translation import ugettext as _, ugettext_lazy
 
@@ -10,6 +11,9 @@ from glacier_backup.models import (
 
 
 class ArchiveAdmin(admin.ModelAdmin):
+
+    """Admin for Archive class"""
+
     list_display = ('title', 'created', 'vault', 'status', )
     date_hierarchy = 'created'
     ordering = ('created', 'vault', 'status', )
@@ -36,6 +40,9 @@ class ArchiveAdmin(admin.ModelAdmin):
 
 
 class VaultAdmin(admin.ModelAdmin):
+
+    """Admin for Vault class"""
+
     actions = ['inventory', ]
 
     def inventory(self, request, queryset):  # pylint:disable=unused-argument
@@ -53,6 +60,9 @@ class VaultAdmin(admin.ModelAdmin):
 
 
 class JobAdmin(admin.ModelAdmin):
+
+    """Admin for Job class"""
+
     list_display = ('vault', 'status', 'date_completion', 'date_updated', 'date_creation', 'job_id', )
     date_hierarchy = 'date_creation'
     ordering = ('date_updated', )
@@ -60,10 +70,16 @@ class JobAdmin(admin.ModelAdmin):
 
 
 class InventoryRetrievalJobAdmin(JobAdmin):
+
+    """Admin for InventoryRetrievalJob class"""
+
     pass
 
 
 class ArchiveRetrievalJobAdmin(JobAdmin):
+
+    """Admin for ArchiveRetrievalJob class"""
+
     pass
 
 admin.site.register(Archive, ArchiveAdmin)
