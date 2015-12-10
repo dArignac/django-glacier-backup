@@ -19,5 +19,5 @@ def create_local_date_from_utc_datetime_without_tzinfo(str_date):
 
     try:
         return dateutil.parser.parse(str_date).astimezone(timezone(settings.TIME_ZONE))
-    except:
+    except (ValueError, OverflowError):
         return None

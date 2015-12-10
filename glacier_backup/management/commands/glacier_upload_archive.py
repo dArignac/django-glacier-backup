@@ -52,7 +52,7 @@ class Command(BaseCommand):
             raise CommandError('Backup with this parameters already exists!')
 
         # log something
-        logger.info('Trying to push "%(filename)s" to vault "%(vault)s" as "%(title)s"...' % {
+        logger.info('Trying to push "%(filename)s" to vault "%(vault)s" as "%(title)s"...', extra={
             'filename': path_source_file,
             'vault': vault.name,
             'title': backup_title,
@@ -72,7 +72,7 @@ class Command(BaseCommand):
 
             file_obj.close()
 
-            logger.info('Successfully uploaded backup "%(title)s" with PK %(pk)s' % {
+            logger.info('Successfully uploaded backup "%(title)s" with PK %(pk)s', extra={
                 'title': archive.title,
                 'pk': archive.pk,
             })

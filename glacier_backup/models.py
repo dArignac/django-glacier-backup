@@ -188,6 +188,13 @@ class Job(models.Model):
     class Meta:
         abstract = True
 
+    def __unicode__(self):
+        """
+        Returns a string representation.
+        :return: string
+        """
+        return 'Job (Vault: {:s}ID:{:s}'.format(self.vault, self.job_id)
+
     @property
     def sns_topic_arn(self):
         """

@@ -27,7 +27,7 @@ class SQSMessageCollector(PeriodicTask):
         broker = SQSMessageBroker()
 
         # log the received messages
-        logger.debug('received %d messages from SQS' % len(sqs_messages))
+        logger.debug('received %d messages from SQS', len(sqs_messages))
 
         # iterate them...
         for sqs_message in sqs_messages:
@@ -35,7 +35,7 @@ class SQSMessageCollector(PeriodicTask):
             # try to load the message as JSON
             try:
                 message_json = json.loads(sqs_message.get_body())
-            except:
+            except ValueError:
                 logger.exception('Converting the message to JSON failed')
             else:
                 # the broker decide who shall handle the message
