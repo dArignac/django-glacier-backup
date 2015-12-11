@@ -11,6 +11,7 @@ from glacier_backup.models import Archive, Vault
 
 
 class Command(BaseCommand):
+
     """The management command doing an upload to a Glacier vault"""
 
     args = '<path-to-backup-file> <backup-title> <vault-name>'

@@ -9,6 +9,7 @@ from glacier_backup.aws import Glacier
 
 
 class Vault(models.Model):
+
     """
     A vault.
 
@@ -45,6 +46,7 @@ class Vault(models.Model):
 
 
 class Archive(models.Model):
+
     """
     A archive.
 
@@ -124,6 +126,7 @@ class Archive(models.Model):
 
 
 class Job(models.Model):
+
     """A job for putting something into a Glacier vault."""
 
     STATUS_CHOICES = (
