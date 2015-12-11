@@ -1,3 +1,5 @@
+"""The management command for uploading files to Glacier"""
+
 import logging
 import os
 
@@ -9,13 +11,15 @@ from glacier_backup.models import Archive, Vault
 
 
 class Command(BaseCommand):
+    """The management command doing an upload to a Glacier vault"""
+
     args = '<path-to-backup-file> <backup-title> <vault-name>'
     help = 'Creates an AWS Glacier backup for the given file.'
 
     def handle(self, *args, **options):
         logger = logging.getLogger('glacier_backup')
 
-        ### check prerequisites:
+        # check prerequisites:
         # given arguments
         if len(args) != 3:
             raise CommandError('Please enter the correct number of arguments: %s' % self.args)

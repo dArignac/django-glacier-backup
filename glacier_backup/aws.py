@@ -1,3 +1,5 @@
+"""Module for all Amazon AWS relevant implementations"""
+
 import boto
 import boto.sqs
 

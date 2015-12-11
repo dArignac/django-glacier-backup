@@ -1,3 +1,5 @@
+"""All event driven or reoccurring tasks will be defined here"""
+
 import json
 import logging
 

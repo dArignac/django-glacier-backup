@@ -1,3 +1,5 @@
+"""Helper functions."""
+
 import dateutil.parser
 
 from django.conf import settings

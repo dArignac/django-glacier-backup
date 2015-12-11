@@ -1,3 +1,5 @@
+"""Contains broker implementations"""
+
 import logging
 import json
 

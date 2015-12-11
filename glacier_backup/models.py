@@ -1,3 +1,5 @@
+"""Contains all necessary database models."""
+
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.timezone import now as tz_aware_now
@@ -7,6 +9,12 @@ from glacier_backup.aws import Glacier
 
 
 class Vault(models.Model):
+    """
+    A vault.
+
+    This model is an analogy to the AWS Glacier vault.
+    """
+
     name = models.CharField(
         max_length=255,
         unique=True,  # as identified by name, there can be only one!
@@ -37,6 +45,12 @@ class Vault(models.Model):
 
 
 class Archive(models.Model):
+    """
+    A archive.
+
+    This will be a file that shall be put into a Glacier vault.
+    """
+
     STATUS_CHOICES = (
         (0, _('Initial Status'),),
         (1, _('Uploaded'),),
@@ -110,6 +124,8 @@ class Archive(models.Model):
 
 
 class Job(models.Model):
+    """A job for putting something into a Glacier vault."""
+
     STATUS_CHOICES = (
         (0, _('Created'),),
         (1, _('Uploaded'),),

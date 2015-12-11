@@ -1,3 +1,5 @@
+"""Application settings that can be overwritten with Django settings"""
+
 from django.conf import settings
 
 

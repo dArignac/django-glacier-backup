@@ -1,3 +1,5 @@
+"""Module for handler that handle several Glacier events"""
+
 import logging
 
 from .aws import Glacier, SQS
